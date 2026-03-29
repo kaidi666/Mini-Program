@@ -1,0 +1,66 @@
+<view class="container {{darkMode ? 'dark-mode' : ''}}">
+  <view class="history-list" wx:if="{{historyList.length > 0}}">
+    <view
+      class="history-item card"
+      wx:for="{{historyList}}"
+      wx:key="weekId"
+      bindtap="onWeekTap"
+      data-week-id="{{item.weekId}}"
+    >
+      <view class="history-header">
+        <text class="history-week">第{{item.weekNumber}}周</text>
+        <text class="history-date">{{item.dateRange}}</text>
+      </view>
+      <view class="history-progress">
+        <view class="progress-bar">
+          <view class="progress-fill" style="width: {{item.stats.percentage}}%"></view>
+        </view>
+        <text class="progress-text">{{item.stats.percentage}}%</text>
+      </view>
+      <view class="history-stats">
+        完成 {{item.stats.completed}}/{{item.stats.total}} 个任务
+      </view>
+    </view>
+  </view>
+
+  <!-- 空状态 -->
+  <view class="empty-state" wx:if="{{historyList.length === 0}}">
+    <text class="empty-icon">📊</text>
+    <text class="empty-text">暂无历史记录</text>
+    <text class="empty-hint">完成本周任务后，下周会自动归档</text>
+  </view>
+</view>
+
+<!-- 周详情弹窗 -->
+<view class="modal-mask" wx:if="{{showDetail}}" bindtap="closeDetail">
+  <view class="modal-container" catchtap="stopPropagation">
+    <view class="modal-header">
+      <text class="modal-title">第{{selectedWeek.weekNumber}}周详情</text>
+      <view class="modal-close" bindtap="closeDetail">
+        <text>×</text>
+      </view>
+    </view>
+    <scroll-view class="modal-body" scroll-y>
+      <view class="task-list">
+        <view
+          class="task-item {{item.completed ? 'completed' : ''}}"
+          wx:for="{{selectedWeek.tasks}}"
+          wx:key="id"
+        >
+          <view class="task-status">
+            <text>{{item.completed ? '✓' : '○'}}</text>
+          </view>
+          <view class="task-content">
+            <view class="task-title">{{item.title}}</view>
+            <view class="task-meta">
+              <text class="priority priority-{{item.priority}}">
+                {{item.priority === 1 ? '高' : item.priority === 2 ? '中' : '低'}}
+              </text>
+              <text wx:if="{{item.dueDate}}"> · {{item.dueDateFriendly}}</text>
+            </view>
+          </view>
+        </view>
+      </view>
+    </scroll-view>
+  </view>
+</view>

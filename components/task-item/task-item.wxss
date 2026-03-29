@@ -1,0 +1,105 @@
+.task-item {
+  display: flex;
+  align-items: center;
+  padding: 24rpx;
+  background-color: var(--card-bg);
+  border-radius: 12rpx;
+  margin-bottom: 16rpx;
+  transition: all 0.3s ease;
+}
+
+.task-item.completed {
+  opacity: 0.6;
+}
+
+.task-item.completed .task-title {
+  text-decoration: line-through;
+  color: var(--text-secondary);
+}
+
+.task-checkbox {
+  margin-right: 20rpx;
+}
+
+.checkbox {
+  width: 44rpx;
+  height: 44rpx;
+  border-radius: 50%;
+  border: 4rpx solid;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+}
+
+.checkbox.priority-1 {
+  border-color: var(--priority-high);
+}
+
+.checkbox.priority-2 {
+  border-color: var(--priority-medium);
+}
+
+.checkbox.priority-3 {
+  border-color: var(--priority-low);
+}
+
+.checkbox.checked {
+  background-color: var(--primary-color);
+  border-color: var(--primary-color);
+}
+
+.check-icon {
+  color: #FFFFFF;
+  font-size: 24rpx;
+  font-weight: bold;
+}
+
+.task-content {
+  flex: 1;
+  min-width: 0;
+}
+
+.task-title {
+  font-size: 30rpx;
+  color: var(--text-color);
+  margin-bottom: 8rpx;
+  word-break: break-all;
+}
+
+.task-meta {
+  display: flex;
+  align-items: center;
+}
+
+.task-date {
+  font-size: 24rpx;
+  color: var(--text-secondary);
+}
+
+.task-actions {
+  display: flex;
+  gap: 16rpx;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.task-item:active .task-actions {
+  opacity: 1;
+}
+
+.action-btn {
+  padding: 8rpx 16rpx;
+  border-radius: 8rpx;
+  font-size: 24rpx;
+}
+
+.edit-btn {
+  background-color: var(--primary-color);
+  color: #FFFFFF;
+}
+
+.delete-btn {
+  background-color: var(--priority-high);
+  color: #FFFFFF;
+}

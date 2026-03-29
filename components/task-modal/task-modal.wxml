@@ -1,0 +1,77 @@
+<view class="modal-mask" wx:if="{{visible}}" bindtap="onCancel">
+  <view class="modal-container" catchtap="stopPropagation">
+    <view class="modal-header">
+      <text class="modal-title">{{isEdit ? '编辑任务' : '新建任务'}}</text>
+      <view class="modal-close" bindtap="onCancel">
+        <text>×</text>
+      </view>
+    </view>
+
+    <view class="modal-body">
+      <!-- 任务名称 -->
+      <view class="form-item">
+        <view class="form-label">任务名称</view>
+        <input
+          class="form-input"
+          placeholder="请输入任务名称"
+          value="{{title}}"
+          bindinput="onTitleInput"
+          maxlength="100"
+        />
+      </view>
+
+      <!-- 优先级 -->
+      <view class="form-item">
+        <view class="form-label">优先级</view>
+        <view class="priority-options">
+          <view
+            class="priority-option {{priority === 1 ? 'active' : ''}}"
+            bindtap="onPriorityChange"
+            data-priority="1"
+          >
+            <view class="priority-dot high"></view>
+            <text>高</text>
+          </view>
+          <view
+            class="priority-option {{priority === 2 ? 'active' : ''}}"
+            bindtap="onPriorityChange"
+            data-priority="2"
+          >
+            <view class="priority-dot medium"></view>
+            <text>中</text>
+          </view>
+          <view
+            class="priority-option {{priority === 3 ? 'active' : ''}}"
+            bindtap="onPriorityChange"
+            data-priority="3"
+          >
+            <view class="priority-dot low"></view>
+            <text>低</text>
+          </view>
+        </view>
+      </view>
+
+      <!-- 截止日期 -->
+      <view class="form-item">
+        <view class="form-label">截止日期</view>
+        <picker
+          mode="date"
+          value="{{dueDate}}"
+          start="{{minDate}}"
+          end="{{maxDate}}"
+          bindchange="onDateChange"
+        >
+          <view class="form-picker">
+            <text>{{dueDate || '选择日期'}}</text>
+            <text class="picker-arrow">▼</text>
+          </view>
+        </picker>
+      </view>
+    </view>
+
+    <view class="modal-footer">
+      <view class="btn-cancel" bindtap="onCancel">取消</view>
+      <view class="btn-confirm" bindtap="onConfirm">保存</view>
+    </view>
+  </view>
+</view>

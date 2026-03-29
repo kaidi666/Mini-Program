@@ -1,0 +1,211 @@
+.container {
+  padding: 20rpx;
+  min-height: 100vh;
+}
+
+/* 历史列表 */
+.history-list {
+  display: flex;
+  flex-direction: column;
+  gap: 20rpx;
+}
+
+.history-item {
+  padding: 24rpx;
+}
+
+.history-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16rpx;
+}
+
+.history-week {
+  font-size: 32rpx;
+  font-weight: bold;
+  color: var(--text-color);
+}
+
+.history-date {
+  font-size: 24rpx;
+  color: var(--text-secondary);
+}
+
+.history-progress {
+  display: flex;
+  align-items: center;
+  gap: 16rpx;
+  margin-bottom: 12rpx;
+}
+
+.progress-bar {
+  flex: 1;
+  height: 12rpx;
+  background-color: var(--border-color);
+  border-radius: 6rpx;
+  overflow: hidden;
+}
+
+.progress-fill {
+  height: 100%;
+  background-color: var(--primary-color);
+  border-radius: 6rpx;
+}
+
+.progress-text {
+  font-size: 24rpx;
+  color: var(--primary-color);
+  font-weight: bold;
+  min-width: 60rpx;
+  text-align: right;
+}
+
+.history-stats {
+  font-size: 24rpx;
+  color: var(--text-secondary);
+}
+
+/* 空状态 */
+.empty-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 100rpx 0;
+}
+
+.empty-icon {
+  font-size: 80rpx;
+  margin-bottom: 24rpx;
+}
+
+.empty-text {
+  font-size: 32rpx;
+  color: var(--text-color);
+  margin-bottom: 12rpx;
+}
+
+.empty-hint {
+  font-size: 26rpx;
+  color: var(--text-secondary);
+}
+
+/* 详情弹窗 */
+.modal-mask {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.modal-container {
+  width: 90%;
+  max-width: 600rpx;
+  max-height: 80vh;
+  background-color: var(--card-bg);
+  border-radius: 24rpx;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.modal-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 32rpx;
+  border-bottom: 1rpx solid var(--border-color);
+}
+
+.modal-title {
+  font-size: 34rpx;
+  font-weight: bold;
+  color: var(--text-color);
+}
+
+.modal-close {
+  width: 48rpx;
+  height: 48rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 40rpx;
+  color: var(--text-secondary);
+}
+
+.modal-body {
+  flex: 1;
+  padding: 24rpx;
+  max-height: 60vh;
+}
+
+.task-list {
+  display: flex;
+  flex-direction: column;
+  gap: 16rpx;
+}
+
+.task-item {
+  display: flex;
+  align-items: center;
+  padding: 16rpx;
+  background-color: var(--bg-color);
+  border-radius: 12rpx;
+}
+
+.task-item.completed {
+  opacity: 0.6;
+}
+
+.task-item.completed .task-title {
+  text-decoration: line-through;
+}
+
+.task-status {
+  width: 40rpx;
+  height: 40rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 16rpx;
+  font-size: 28rpx;
+  color: var(--primary-color);
+}
+
+.task-content {
+  flex: 1;
+  min-width: 0;
+}
+
+.task-title {
+  font-size: 28rpx;
+  color: var(--text-color);
+  margin-bottom: 4rpx;
+}
+
+.task-meta {
+  font-size: 22rpx;
+  color: var(--text-secondary);
+}
+
+.priority {
+  font-weight: bold;
+}
+
+.priority-1 {
+  color: var(--priority-high);
+}
+
+.priority-2 {
+  color: var(--priority-medium);
+}
+
+.priority-3 {
+  color: var(--priority-low);
+}

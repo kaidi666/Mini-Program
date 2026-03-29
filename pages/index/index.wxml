@@ -1,0 +1,107 @@
+<view class="container {{darkMode ? 'dark-mode' : ''}}">
+  <!-- 周信息头部 -->
+  <view class="week-header card">
+    <view class="week-title">
+      <text class="week-number">📅 第{{weekInfo.weekNumber}}周</text>
+    </view>
+    <view class="week-date">{{weekInfo.dateRange}}</view>
+
+    <!-- 进度条 -->
+    <view class="progress-section">
+      <view class="progress-label">
+        <text>本周进度</text>
+        <text class="progress-percent">{{stats.percentage}}%</text>
+      </view>
+      <view class="progress-bar">
+        <view class="progress-fill" style="width: {{stats.percentage}}%"></view>
+      </view>
+      <view class="progress-text">已完成 {{stats.completed}}/{{stats.total}} 个任务</view>
+    </view>
+  </view>
+
+  <!-- 任务列表 -->
+  <view class="task-list">
+    <!-- 高优先级 -->
+    <view class="priority-section" wx:if="{{groupedTasks.high.length > 0}}">
+      <view class="priority-header">
+        <text class="priority-icon high">🔴</text>
+        <text class="priority-title">高优先级</text>
+        <text class="priority-count">({{groupedTasks.high.length}})</text>
+      </view>
+      <task-item
+        wx:for="{{groupedTasks.high}}"
+        wx:key="id"
+        task-id="{{item.id}}"
+        title="{{item.title}}"
+        priority="{{item.priority}}"
+        due-date="{{item.dueDateFriendly}}"
+        completed="{{item.completed}}"
+        bind:toggle="onTaskToggle"
+        bind:edit="onTaskEdit"
+        bind:delete="onTaskDelete"
+      />
+    </view>
+
+    <!-- 中优先级 -->
+    <view class="priority-section" wx:if="{{groupedTasks.medium.length > 0}}">
+      <view class="priority-header">
+        <text class="priority-icon medium">🟡</text>
+        <text class="priority-title">中优先级</text>
+        <text class="priority-count">({{groupedTasks.medium.length}})</text>
+      </view>
+      <task-item
+        wx:for="{{groupedTasks.medium}}"
+        wx:key="id"
+        task-id="{{item.id}}"
+        title="{{item.title}}"
+        priority="{{item.priority}}"
+        due-date="{{item.dueDateFriendly}}"
+        completed="{{item.completed}}"
+        bind:toggle="onTaskToggle"
+        bind:edit="onTaskEdit"
+        bind:delete="onTaskDelete"
+      />
+    </view>
+
+    <!-- 低优先级 -->
+    <view class="priority-section" wx:if="{{groupedTasks.low.length > 0}}">
+      <view class="priority-header">
+        <text class="priority-icon low">🟢</text>
+        <text class="priority-title">低优先级</text>
+        <text class="priority-count">({{groupedTasks.low.length}})</text>
+      </view>
+      <task-item
+        wx:for="{{groupedTasks.low}}"
+        wx:key="id"
+        task-id="{{item.id}}"
+        title="{{item.title}}"
+        priority="{{item.priority}}"
+        due-date="{{item.dueDateFriendly}}"
+        completed="{{item.completed}}"
+        bind:toggle="onTaskToggle"
+        bind:edit="onTaskEdit"
+        bind:delete="onTaskDelete"
+      />
+    </view>
+
+    <!-- 空状态 -->
+    <view class="empty-state" wx:if="{{stats.total === 0}}">
+      <text class="empty-icon">📝</text>
+      <text class="empty-text">本周还没有任务</text>
+      <text class="empty-hint">点击下方按钮添加任务</text>
+    </view>
+  </view>
+
+  <!-- 添加任务按钮 -->
+  <view class="add-btn" bindtap="onAddTask">
+    <text>＋ 添加任务</text>
+  </view>
+</view>
+
+<!-- 任务编辑弹窗 -->
+<task-modal
+  visible="{{showModal}}"
+  task-data="{{editingTask}}"
+  bind:cancel="onModalCancel"
+  bind:confirm="onModalConfirm"
+/>

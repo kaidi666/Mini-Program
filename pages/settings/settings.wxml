@@ -1,0 +1,40 @@
+<view class="container {{darkMode ? 'dark-mode' : ''}}">
+  <!-- 外观设置 -->
+  <view class="section">
+    <view class="section-title">外观</view>
+    <view class="setting-item card">
+      <view class="setting-content">
+        <text class="setting-label">深色模式</text>
+        <text class="setting-desc">切换深色/浅色主题</text>
+      </view>
+      <switch
+        checked="{{darkMode}}"
+        color="{{darkMode ? '#3498DB' : '#3498DB'}}"
+        bindchange="onDarkModeChange"
+      />
+    </view>
+  </view>
+
+  <!-- 数据管理 -->
+  <view class="section">
+    <view class="section-title">数据</view>
+    <view class="setting-item card" bindtap="onClearData">
+      <view class="setting-content">
+        <text class="setting-label danger">清除所有数据</text>
+        <text class="setting-desc">删除所有任务和历史记录</text>
+      </view>
+      <text class="setting-arrow">›</text>
+    </view>
+  </view>
+
+  <!-- 关于 -->
+  <view class="section">
+    <view class="section-title">关于</view>
+    <view class="setting-item card">
+      <view class="setting-content">
+        <text class="setting-label">版本</text>
+      </view>
+      <text class="setting-value">1.0.0</text>
+    </view>
+  </view>
+</view>
