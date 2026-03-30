@@ -15,6 +15,18 @@
     </view>
   </view>
 
+  <!-- 菜谱设置 -->
+  <view class="section">
+    <view class="section-title">菜谱</view>
+    <view class="setting-item card" bindtap="onMealConfigTap">
+      <view class="setting-content">
+        <text class="setting-label">餐次配置</text>
+        <text class="setting-desc">{{mealSummary}}</text>
+      </view>
+      <text class="setting-arrow">›</text>
+    </view>
+  </view>
+
   <!-- 数据管理 -->
   <view class="section">
     <view class="section-title">数据</view>

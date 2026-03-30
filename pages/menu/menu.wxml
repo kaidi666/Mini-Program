@@ -1,0 +1,130 @@
+<!-- weekly-plan/pages/menu/menu.wxml -->
+<wxs module="utils">
+module.exports = {
+  includes: function(arr, item) {
+    if (!arr || !arr.length) return false;
+    for (var i = 0; i < arr.length; i++) {
+      if (arr[i] === item) return true;
+    }
+    return false;
+  }
+}
+</wxs>
+
+<view class="container {{darkMode ? 'dark-mode' : ''}}">
+  <!-- 周信息头部 -->
+  <view class="week-header card">
+    <view class="week-title">
+      <text class="week-number">📅 第{{weekInfo.weekNumber}}周</text>
+      <view class="dish-library-btn" bindtap="goToDishLibrary">
+        <text>📚 菜品库</text>
+      </view>
+    </view>
+    <view class="week-date">{{weekInfo.dateRange}}</view>
+  </view>
+
+  <!-- 日期选择器 -->
+  <scroll-view class="date-tabs" scroll-x>
+    <view
+      class="date-tab {{currentDate === item.date ? 'active' : ''}}"
+      wx:for="{{weekDays}}"
+      wx:key="date"
+      bindtap="onDateSelect"
+      data-date="{{item.date}}"
+    >
+      <text class="tab-weekday">{{item.weekday}}</text>
+      <text class="tab-date">{{item.day}}</text>
+    </view>
+  </scroll-view>
+
+  <!-- 餐次列表 -->
+  <view class="meal-list">
+    <meal-section
+      wx:for="{{enabledMeals}}"
+      wx:key="id"
+      meal-name="{{item.name}}"
+      icon="{{item.icon}}"
+      dishes="{{item.dishes}}"
+      date="{{currentDate}}"
+      bind:adddish="onAddDish"
+      bind:removedish="onRemoveDish"
+    />
+  </view>
+
+  <!-- 智能推荐按钮 -->
+  <view class="recommend-btn" bindtap="onRecommend">
+    <text>🎲 智能推荐</text>
+  </view>
+</view>
+
+<!-- 添加菜品弹窗 -->
+<view class="action-sheet" wx:if="{{showDishPicker}}" bindtap="closeDishPicker">
+  <view class="action-sheet-content" catchtap="">
+    <view class="action-sheet-title">选择菜品</view>
+    <scroll-view scroll-y class="dish-picker-list">
+      <view
+        class="dish-picker-item"
+        wx:for="{{allDishes}}"
+        wx:key="id"
+        bindtap="onSelectDish"
+        data-id="{{item.id}}"
+      >
+        <text class="dish-picker-name">{{item.name}}</text>
+        <text class="dish-picker-tags">{{item.tags.join('、')}}</text>
+      </view>
+    </scroll-view>
+    <view class="action-sheet-btn" bindtap="onCreateNewDish">+ 新建菜品</view>
+  </view>
+</view>
+
+<!-- 标签选择弹窗 -->
+<view class="action-sheet" wx:if="{{showTagPicker}}" bindtap="closeTagPicker">
+  <view class="action-sheet-content" catchtap="">
+    <view class="action-sheet-title">智能推荐</view>
+
+    <!-- 餐次选择 -->
+    <view class="picker-section">
+      <view class="picker-label">推荐到</view>
+      <view class="meal-picker-list">
+        <view
+          class="meal-picker-item {{selectedMeal === item.name ? 'active' : ''}}"
+          wx:for="{{enabledMeals}}"
+          wx:key="id"
+          catchtap="onMealSelect"
+          data-meal="{{item.name}}"
+        >
+          <text>{{item.icon}} {{item.name}}</text>
+        </view>
+      </view>
+    </view>
+
+    <!-- 标签选择 -->
+    <view class="picker-section">
+      <view class="picker-label">偏好标签（可选）</view>
+      <view class="tag-picker-list">
+        <view
+          class="tag-picker-item {{utils.includes(selectedTags, item) ? 'active' : ''}}"
+          wx:for="{{allTags}}"
+          wx:key="*this"
+          catchtap="onTagSelect"
+          data-tag="{{item}}"
+        >
+          {{item}}
+        </view>
+      </view>
+    </view>
+
+    <view class="action-sheet-footer">
+      <view class="action-sheet-btn cancel" bindtap="closeTagPicker">取消</view>
+      <view class="action-sheet-btn confirm" bindtap="onConfirmRecommend">推荐</view>
+    </view>
+  </view>
+</view>
+
+<!-- 菜品编辑弹窗 -->
+<dish-modal
+  visible="{{showDishModal}}"
+  dish-data="{{editingDish}}"
+  bind:cancel="onDishModalCancel"
+  bind:confirm="onDishModalConfirm"
+/>

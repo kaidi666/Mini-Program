@@ -1,0 +1,134 @@
+.meal-section {
+  background-color: var(--card-bg);
+  border-radius: 16rpx;
+  margin-bottom: 20rpx;
+  overflow: hidden;
+}
+
+/* 头部样式 */
+.meal-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 24rpx;
+  background-color: #F8F8F8;
+  transition: background-color 0.3s ease;
+}
+
+.meal-header:active {
+  background-color: #EEEEEE;
+}
+
+.meal-header-left {
+  display: flex;
+  align-items: center;
+}
+
+.meal-icon {
+  font-size: 36rpx;
+  margin-right: 16rpx;
+}
+
+.meal-name {
+  font-size: 32rpx;
+  font-weight: 500;
+  color: var(--text-color);
+}
+
+.meal-header-right {
+  display: flex;
+  align-items: center;
+}
+
+.dish-count {
+  font-size: 24rpx;
+  color: var(--text-secondary);
+  margin-right: 16rpx;
+}
+
+.arrow {
+  font-size: 24rpx;
+  color: var(--text-secondary);
+  transition: transform 0.3s ease;
+}
+
+.arrow-up {
+  transform: rotate(180deg);
+}
+
+.arrow-down {
+  transform: rotate(0deg);
+}
+
+/* 内容区域样式 */
+.meal-content {
+  padding: 24rpx;
+  border-top: 1rpx solid var(--border-color);
+}
+
+/* 菜品列表 */
+.dish-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16rpx;
+  margin-bottom: 20rpx;
+}
+
+/* 菜品芯片样式 */
+.dish-chip {
+  display: flex;
+  align-items: center;
+  padding: 12rpx 20rpx;
+  background-color: var(--primary-color);
+  border-radius: 32rpx;
+  transition: opacity 0.3s ease;
+}
+
+.dish-chip:active {
+  opacity: 0.8;
+}
+
+.dish-chip-name {
+  font-size: 26rpx;
+  color: #FFFFFF;
+  max-width: 200rpx;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.dish-chip-remove {
+  margin-left: 12rpx;
+  font-size: 28rpx;
+  color: #FFFFFF;
+  width: 32rpx;
+  height: 32rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background-color: rgba(255, 255, 255, 0.3);
+}
+
+/* 空状态提示 */
+.empty-tip {
+  text-align: center;
+  padding: 40rpx 0;
+  color: var(--text-secondary);
+  font-size: 26rpx;
+}
+
+/* 添加菜品按钮 */
+.add-dish-btn {
+  text-align: center;
+  padding: 20rpx;
+  color: var(--primary-color);
+  font-size: 28rpx;
+  border: 2rpx dashed var(--primary-color);
+  border-radius: 12rpx;
+  transition: all 0.3s ease;
+}
+
+.add-dish-btn:active {
+  background-color: rgba(52, 152, 219, 0.1);
+}

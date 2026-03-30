@@ -1,6 +1,9 @@
 {
   "pages": [
     "pages/index/index",
+    "pages/menu/menu",
+    "pages/dishes/dishes",
+    "pages/meal-config/meal-config",
     "pages/history/history",
     "pages/settings/settings"
   ],
@@ -21,6 +24,12 @@
         "text": "本周",
         "iconPath": "assets/icons/home.png",
         "selectedIconPath": "assets/icons/home-active.png"
+      },
+      {
+        "pagePath": "pages/menu/menu",
+        "text": "菜谱",
+        "iconPath": "assets/icons/menu.png",
+        "selectedIconPath": "assets/icons/menu-active.png"
       },
       {
         "pagePath": "pages/history/history",

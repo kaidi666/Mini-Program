@@ -1,0 +1,50 @@
+<view class="container {{darkMode ? 'dark-mode' : ''}}">
+  <!-- 筛选区 -->
+  <view class="filter-section">
+    <view class="filter-scroll">
+      <view class="filter-btn {{currentFilter === '' ? 'active' : ''}}" bindtap="onFilterChange" data-filter="">
+        <text>全部</text>
+      </view>
+      <view
+        class="filter-btn {{currentFilter === item ? 'active' : ''}}"
+        wx:for="{{allTags}}"
+        wx:key="index"
+        bindtap="onFilterChange"
+        data-filter="{{item}}"
+      >
+        <text>{{item}}</text>
+      </view>
+    </view>
+  </view>
+
+  <!-- 菜品列表 -->
+  <view class="dish-list" wx:if="{{filteredDishes.length > 0}}">
+    <dish-item
+      wx:for="{{filteredDishes}}"
+      wx:key="id"
+      dish="{{item}}"
+      bind:edit="onEditDish"
+      bind:delete="onDeleteDish"
+    />
+  </view>
+
+  <!-- 空状态 -->
+  <view class="empty-state" wx:if="{{filteredDishes.length === 0}}">
+    <text class="empty-icon">🍽️</text>
+    <text class="empty-text">{{currentFilter ? '没有该标签的菜品' : '还没有添加菜品'}}</text>
+    <text class="empty-hint">点击下方按钮添加菜品</text>
+  </view>
+
+  <!-- 添加按钮 -->
+  <view class="add-btn" bindtap="onAddDish">
+    <text>＋ 添加菜品</text>
+  </view>
+</view>
+
+<!-- 编辑弹窗 -->
+<dish-modal
+  visible="{{showModal}}"
+  dish-data="{{editingDish}}"
+  bind:cancel="onModalCancel"
+  bind:confirm="onModalConfirm"
+/>

@@ -1,22 +1,36 @@
 const storage = require('../../utils/storage.js')
 const util = require('../../utils/util.js')
+const dishStorage = require('../../utils/dish-storage.js')
 
 Page({
   data: {
-    darkMode: false
+    darkMode: false,
+    mealSummary: ''
   },
 
   onLoad() {
     this.loadSettings()
+    this.loadMealSummary()
   },
 
   onShow() {
     this.applyTheme()
+    this.loadMealSummary()
   },
 
   loadSettings() {
     const settings = storage.getSettings()
     this.setData({ darkMode: settings.darkMode })
+  },
+
+  loadMealSummary() {
+    const meals = dishStorage.getEnabledMeals()
+    const summary = meals.map(m => m.name).join('、') || '未配置'
+    this.setData({ mealSummary: summary })
+  },
+
+  onMealConfigTap() {
+    wx.navigateTo({ url: '/pages/meal-config/meal-config' })
   },
 
   onDarkModeChange(e) {

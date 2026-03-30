@@ -1,0 +1,7 @@
+{
+  "navigationBarTitleText": "菜品库",
+  "usingComponents": {
+    "dish-item": "/components/dish-item/dish-item",
+    "dish-modal": "/components/dish-modal/dish-modal"
+  }
+}

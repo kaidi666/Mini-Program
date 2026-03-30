@@ -1,0 +1,279 @@
+/* weekly-plan/pages/menu/menu.wxss */
+.container {
+  min-height: 100vh;
+  background: #f5f5f5;
+  padding-bottom: 120rpx;
+}
+
+.container.dark-mode {
+  background: #1A1A1A;
+}
+
+/* 周信息头部 */
+.week-header {
+  padding: 24rpx;
+  background: #fff;
+  margin-bottom: 20rpx;
+}
+
+.dark-mode .week-header {
+  background: #2A2A2A;
+}
+
+.week-title {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 8rpx;
+}
+
+.dish-library-btn {
+  font-size: 26rpx;
+  color: #3498DB;
+  padding: 8rpx 20rpx;
+  border: 1rpx solid #3498DB;
+  border-radius: 24rpx;
+}
+
+.dark-mode .dish-library-btn {
+  border-color: #3498DB;
+}
+
+.week-number {
+  font-size: 32rpx;
+  font-weight: 600;
+  color: #333;
+}
+
+.dark-mode .week-number {
+  color: #fff;
+}
+
+.week-date {
+  font-size: 26rpx;
+  color: #999;
+}
+
+/* 日期选择器 */
+.date-tabs {
+  white-space: nowrap;
+  padding: 20rpx 24rpx;
+  background: #fff;
+  margin-bottom: 20rpx;
+}
+
+.dark-mode .date-tabs {
+  background: #2A2A2A;
+}
+
+.date-tab {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 16rpx 32rpx;
+  margin-right: 16rpx;
+  border-radius: 12rpx;
+  background: #f5f5f5;
+}
+
+.dark-mode .date-tab {
+  background: #3A3A3A;
+}
+
+.date-tab.active {
+  background: #3498DB;
+}
+
+.tab-weekday {
+  font-size: 24rpx;
+  color: #666;
+}
+
+.dark-mode .tab-weekday {
+  color: #aaa;
+}
+
+.date-tab.active .tab-weekday {
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.tab-date {
+  font-size: 32rpx;
+  font-weight: 600;
+  color: #333;
+  margin-top: 4rpx;
+}
+
+.dark-mode .tab-date {
+  color: #fff;
+}
+
+.date-tab.active .tab-date {
+  color: #fff;
+}
+
+/* 餐次列表 */
+.meal-list {
+  padding: 0 24rpx;
+}
+
+/* 智能推荐按钮 */
+.recommend-btn {
+  position: fixed;
+  left: 50%;
+  bottom: 40rpx;
+  transform: translateX(-50%);
+  background: #27AE60;
+  color: #fff;
+  padding: 24rpx 60rpx;
+  border-radius: 40rpx;
+  font-size: 30rpx;
+  box-shadow: 0 4rpx 16rpx rgba(39, 174, 96, 0.4);
+}
+
+/* Action Sheet */
+.action-sheet {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: flex-end;
+  z-index: 1000;
+}
+
+.action-sheet-content {
+  width: 100%;
+  background: #fff;
+  border-radius: 24rpx 24rpx 0 0;
+  max-height: 70vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.action-sheet-title {
+  padding: 32rpx;
+  text-align: center;
+  font-size: 32rpx;
+  font-weight: 600;
+  color: #333;
+  border-bottom: 1rpx solid #eee;
+}
+
+.dish-picker-list {
+  flex: 1;
+  max-height: 50vh;
+}
+
+.dish-picker-item {
+  padding: 24rpx 32rpx;
+  border-bottom: 1rpx solid #f5f5f5;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.dish-picker-name {
+  font-size: 30rpx;
+  color: #333;
+}
+
+.dish-picker-tags {
+  font-size: 24rpx;
+  color: #999;
+}
+
+.action-sheet-btn {
+  padding: 32rpx;
+  text-align: center;
+  font-size: 30rpx;
+  color: #3498DB;
+  border-top: 1rpx solid #eee;
+}
+
+.action-sheet-footer {
+  display: flex;
+  border-top: 1rpx solid #eee;
+}
+
+.action-sheet-footer .action-sheet-btn {
+  flex: 1;
+  border-top: none;
+}
+
+.action-sheet-btn.cancel {
+  color: #999;
+  border-right: 1rpx solid #eee;
+}
+
+.action-sheet-btn.confirm {
+  color: #3498DB;
+  font-weight: 600;
+}
+
+/* 标签选择 */
+.picker-section {
+  padding: 16rpx 32rpx;
+  border-bottom: 1rpx solid #eee;
+}
+
+.dark-mode .picker-section {
+  border-bottom-color: #3A3A3A;
+}
+
+.picker-label {
+  font-size: 28rpx;
+  color: #666;
+  margin-bottom: 16rpx;
+}
+
+.meal-picker-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16rpx;
+}
+
+.meal-picker-item {
+  padding: 16rpx 32rpx;
+  border-radius: 30rpx;
+  font-size: 28rpx;
+  color: #666;
+  background: #f5f5f5;
+}
+
+.dark-mode .meal-picker-item {
+  background: #3A3A3A;
+  color: #aaa;
+}
+
+.meal-picker-item.active {
+  background: #3498DB;
+  color: #fff;
+}
+
+.tag-picker-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16rpx;
+  padding: 24rpx 32rpx;
+}
+
+.tag-picker-item {
+  padding: 16rpx 32rpx;
+  border-radius: 30rpx;
+  font-size: 28rpx;
+  color: #666;
+  background: #f5f5f5;
+}
+
+.dark-mode .tag-picker-item {
+  background: #3A3A3A;
+  color: #aaa;
+}
+
+.tag-picker-item.active {
+  background: #3498DB;
+  color: #fff;
+}

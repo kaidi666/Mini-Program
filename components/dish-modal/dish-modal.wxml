@@ -1,0 +1,83 @@
+<wxs module="utils">
+module.exports = {
+  hasTag: function(tags, tag) {
+    if (!tags || !tags.length) return false;
+    for (var i = 0; i < tags.length; i++) {
+      if (tags[i] === tag) return true;
+    }
+    return false;
+  }
+}
+</wxs>
+
+<view class="modal-mask" wx:if="{{visible}}" bindtap="onCancel">
+  <view class="modal-container" catchtap="stopPropagation">
+    <view class="modal-header">
+      <text class="modal-title">{{isEdit ? '编辑菜品' : '添加菜品'}}</text>
+      <view class="modal-close" bindtap="onCancel">
+        <text>×</text>
+      </view>
+    </view>
+
+    <view class="modal-body">
+      <!-- 菜名 -->
+      <view class="form-item">
+        <view class="form-label">菜名</view>
+        <input
+          class="form-input"
+          placeholder="请输入菜名"
+          value="{{formData.name}}"
+          bindinput="onNameInput"
+          maxlength="50"
+        />
+      </view>
+
+      <!-- 标签选择 -->
+      <view class="form-item">
+        <view class="form-label">标签</view>
+        <view class="tag-options">
+          <view
+            class="tag-option {{utils.hasTag(formData.tags, item) ? 'active' : ''}}"
+            wx:for="{{allTags}}"
+            wx:key="*this"
+            bindtap="onTagToggle"
+            data-tag="{{item}}"
+          >
+            <text>{{item}}</text>
+          </view>
+        </view>
+      </view>
+
+      <!-- 食材 -->
+      <view class="form-item">
+        <view class="form-label">食材</view>
+        <textarea
+          class="form-textarea"
+          placeholder="请输入食材，多个食材用逗号分隔"
+          value="{{formData.ingredients}}"
+          bindinput="onIngredientsInput"
+          maxlength="200"
+          auto-height
+        />
+      </view>
+
+      <!-- 备注 -->
+      <view class="form-item">
+        <view class="form-label">备注</view>
+        <textarea
+          class="form-textarea"
+          placeholder="请输入备注信息"
+          value="{{formData.note}}"
+          bindinput="onNoteInput"
+          maxlength="200"
+          auto-height
+        />
+      </view>
+    </view>
+
+    <view class="modal-footer">
+      <view class="btn-cancel" bindtap="onCancel">取消</view>
+      <view class="btn-confirm" bindtap="onConfirm">保存</view>
+    </view>
+  </view>
+</view>
