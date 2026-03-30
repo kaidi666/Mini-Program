@@ -1,0 +1,7 @@
+{
+  "navigationBarTitleText": "每周菜谱",
+  "usingComponents": {
+    "meal-section": "/components/meal-section/meal-section",
+    "dish-modal": "/components/dish-modal/dish-modal"
+  }
+}

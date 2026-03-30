@@ -1,0 +1,131 @@
+.modal-mask {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.modal-container {
+  width: 90%;
+  max-width: 600rpx;
+  background-color: var(--card-bg);
+  border-radius: 24rpx;
+  overflow: hidden;
+}
+
+.modal-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 32rpx;
+  border-bottom: 1rpx solid var(--border-color);
+}
+
+.modal-title {
+  font-size: 34rpx;
+  font-weight: bold;
+  color: var(--text-color);
+}
+
+.modal-close {
+  width: 48rpx;
+  height: 48rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 40rpx;
+  color: var(--text-secondary);
+}
+
+.modal-body {
+  padding: 32rpx;
+  max-height: 60vh;
+  overflow-y: auto;
+}
+
+.form-item {
+  margin-bottom: 32rpx;
+}
+
+.form-item:last-child {
+  margin-bottom: 0;
+}
+
+.form-label {
+  font-size: 28rpx;
+  color: var(--text-secondary);
+  margin-bottom: 16rpx;
+}
+
+.form-input {
+  width: 100%;
+  height: 80rpx;
+  padding: 0 24rpx;
+  background-color: var(--bg-color);
+  border-radius: 12rpx;
+  font-size: 30rpx;
+  color: var(--text-color);
+  box-sizing: border-box;
+}
+
+.tag-options {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16rpx;
+}
+
+.tag-option {
+  padding: 12rpx 24rpx;
+  background-color: var(--bg-color);
+  border-radius: 24rpx;
+  font-size: 26rpx;
+  color: var(--text-secondary);
+  border: 2rpx solid transparent;
+  transition: all 0.3s ease;
+}
+
+.tag-option.active {
+  background-color: var(--primary-color);
+  color: #fff;
+}
+
+.form-textarea {
+  width: 100%;
+  min-height: 120rpx;
+  padding: 20rpx 24rpx;
+  background-color: var(--bg-color);
+  border-radius: 12rpx;
+  font-size: 30rpx;
+  color: var(--text-color);
+  box-sizing: border-box;
+}
+
+.modal-footer {
+  display: flex;
+  border-top: 1rpx solid var(--border-color);
+}
+
+.modal-footer view {
+  flex: 1;
+  height: 100rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 32rpx;
+}
+
+.btn-cancel {
+  color: var(--text-secondary);
+  border-right: 1rpx solid var(--border-color);
+}
+
+.btn-confirm {
+  color: var(--primary-color);
+  font-weight: bold;
+}

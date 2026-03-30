@@ -1,0 +1,34 @@
+<view class="meal-section">
+  <!-- 头部区域 -->
+  <view class="meal-header" bindtap="onToggle">
+    <view class="meal-header-left">
+      <text class="meal-icon">{{icon}}</text>
+      <text class="meal-name">{{mealName}}</text>
+    </view>
+    <view class="meal-header-right">
+      <text class="dish-count" wx:if="{{dishes.length > 0}}">{{dishes.length}}道菜</text>
+      <text class="arrow {{expanded ? 'arrow-up' : 'arrow-down'}}">▼</text>
+    </view>
+  </view>
+
+  <!-- 内容区域 -->
+  <view class="meal-content" wx:if="{{expanded}}">
+    <!-- 菜品列表 -->
+    <view class="dish-list" wx:if="{{dishes.length > 0}}">
+      <view class="dish-chip" wx:for="{{dishes}}" wx:key="id">
+        <text class="dish-chip-name">{{item.name}}</text>
+        <text class="dish-chip-remove" catchtap="onRemoveDish" data-index="{{index}}">×</text>
+      </view>
+    </view>
+
+    <!-- 空状态提示 -->
+    <view class="empty-tip" wx:else>
+      <text>暂未添加菜品</text>
+    </view>
+
+    <!-- 添加菜品按钮 -->
+    <view class="add-dish-btn" bindtap="onAddDish">
+      <text>+ 添加菜品</text>
+    </view>
+  </view>
+</view>

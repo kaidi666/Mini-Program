@@ -1,0 +1,19 @@
+<view class="container {{darkMode ? 'dark-mode' : ''}}">
+  <view class="meal-list">
+    <view class="meal-item" wx:for="{{mealConfig}}" wx:key="id">
+      <view class="meal-checkbox" bindtap="onToggleMeal" data-id="{{item.id}}">
+        <text class="checkbox {{item.enabled ? 'checked' : ''}}">{{item.enabled ? '☑' : '☐'}}</text>
+      </view>
+      <view class="meal-name">{{item.name}}</view>
+      <view class="meal-actions">
+        <text class="action-btn" bindtap="onMoveUp" data-id="{{item.id}}" wx:if="{{index > 0}}">↑</text>
+        <text class="action-btn" bindtap="onMoveDown" data-id="{{item.id}}" wx:if="{{index < mealConfig.length - 1}}">↓</text>
+      </view>
+    </view>
+  </view>
+
+  <view class="add-section">
+    <input class="add-input" value="{{newMealName}}" bindinput="onNewMealInput" placeholder="输入自定义餐次名称" />
+    <view class="add-btn" bindtap="onAddMeal">添加</view>
+  </view>
+</view>
